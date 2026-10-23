@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+/* ─── Design tokens ─────────────────────────────────────────────── */
+:root {
+  /* Palette */
+  --bg:        #0a0a12;
+  --bg-panel:  #12121e;
+  --fg:        #e8e8f0;
+  --fg-muted:  #8888aa;
+
+  --cyan:      #00e5ff;
+  --magenta:   #ff2d78;
+  --yellow:    #ffe600;
+  --green:     #39ff14;
+
+  /* Fonts */
+  --font-pixel: var(--font-press-start);
+  --font-body:  var(--font-inter);
+
+  /* Spacing scale (multiples of 4px) */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+  --sp-12: 48px;
+  --sp-16: 64px;
+}
+
+/* ─── Base ──────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Pixel art rendering */
+.pixelated {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* ─── CRT scanline overlay ──────────────────────────────────────── */
+.crt-overlay::after {
+  content: '';
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.08) 2px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
+}
+
+/* ─── Sprite animation helpers ──────────────────────────────────── */
+@keyframes sprite-walk {
+  from { background-position-x: 0; }
+  to   { background-position-x: -100%; }
+}
+
+@keyframes sprite-bob {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-4px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes typewriter-cursor {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes level-enter {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 8px var(--cyan); }
+  50%       { box-shadow: 0 0 24px var(--cyan), 0 0 48px rgba(0,229,255,0.3); }
+}
+
+/* ─── Smooth scroll (fast mode) ────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ─── Skip-nav link ─────────────────────────────────────────────── */
+.skip-nav {
+  position: fixed;
+  top: -100%;
+  left: 0;
+  z-index: 10000;
+  padding: 8px 16px;
+  background: var(--cyan);
+  color: var(--bg);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0 0 4px 0;
+  transition: top 0.1s;
+}
+.skip-nav:focus {
+  top: 0;
+}
+
+/* ─── Reduced-motion: kill all transitions and animations ───────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─── Fast-mode typography overrides ───────────────────────────── */
+.fast-mode h1,
+.fast-mode h2,
+.fast-mode h3,
+.fast-mode h4 {
+  font-family: var(--font-body), system-ui, sans-serif;
+  letter-spacing: normal;
+}
+
+/* ─── Focus rings ───────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+}
