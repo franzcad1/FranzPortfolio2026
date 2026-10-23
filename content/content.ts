@@ -161,9 +161,9 @@ export const projects = [
 export const profile = {
   name: "Franz Cadiente",
   location: "Greater Toronto Area, Canada",
-  bio: "I started as a game programming student and ended up as an AI engineer by way of a dental clinic. That path taught me how to ship software that real people depend on every day.",
+  bio: "My journey has taken me across software development, healthcare operations, and digital marketing, where I discovered how technology can solve real-world problems. Today, I bring those experiences together to build AI-powered systems and software that make work more efficient, solve meaningful problems, and deliver value to the people who use them.",
   // TODO: add real headshot path
-  headshot: null as string | null,
+  headshot: "/headshot.jpg",
   // TODO: add real work photo path
   workPhoto: null as string | null,
   skillGroups: [

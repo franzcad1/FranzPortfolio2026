@@ -111,12 +111,12 @@ export function FastProjects() {
   const [selected, setSelected] = useState<string | null>(null);
 
   return (
-    <section id="projects" className="px-6 py-20" style={{ maxWidth: "100%" }} aria-labelledby="projects-heading">
-      <h2 id="projects-heading" className="text-2xl font-bold mb-8" style={{ color: "var(--fg)" }}>
+    <section id="projects" className="py-20" aria-labelledby="projects-heading">
+      <h2 id="projects-heading" className="text-2xl font-bold mb-8 px-6" style={{ color: "var(--fg)", maxWidth: "680px", margin: "0 auto 2rem" }}>
         Projects
       </h2>
 
-      <div className="flex gap-5 overflow-x-auto pb-4 justify-center" style={{ scrollbarWidth: "none" }}>
+      <div className="flex gap-5 overflow-x-auto pb-4 px-6 justify-center" style={{ scrollbarWidth: "none" }}>
         {projects.map((p) => {
           const accent = accentByProject[p.id] ?? "var(--cyan)";
           return (

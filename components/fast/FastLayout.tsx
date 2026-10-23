@@ -1,7 +1,7 @@
 "use client";
 import { FastHero } from "./FastHero";
 import { FastProjects } from "./FastProjects";
-import { FastProfile } from "./FastProfile";
+import { FastSkills } from "./FastProfile";
 import { FastContact } from "./FastContact";
 
 export function FastLayout() {
@@ -12,7 +12,7 @@ export function FastLayout() {
     >
       <FastHero />
       <FastProjects />
-      <FastProfile />
+      <FastSkills />
       <FastContact />
     </div>
   );

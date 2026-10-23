@@ -202,13 +202,6 @@ export function ProjectDetail({ projectId, onBack, onContact, onFullPortfolio }:
             ← Other projects
           </button>
           <button
-            onClick={onContact}
-            className="text-sm px-5 py-2.5 rounded-lg transition-opacity hover:opacity-80"
-            style={{ border: `1px solid ${accent}55`, color: "var(--fg)", background: "transparent", cursor: "pointer" }}
-          >
-            Contact
-          </button>
-          <button
             onClick={onFullPortfolio}
             className="text-[8px] px-5 py-2.5 rounded-lg transition-opacity hover:opacity-80"
             style={{ fontFamily: "var(--font-pixel)", background: "var(--yellow)", color: "var(--bg)", cursor: "pointer" }}

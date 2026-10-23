@@ -1,5 +1,5 @@
 "use client";
-import { hero, contact } from "@/content/content";
+import { hero, contact, profile } from "@/content/content";
 
 function GitHubIcon() {
   return (
@@ -21,23 +21,18 @@ export function FastHero() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex flex-col justify-center px-6 py-24"
+      className="flex flex-col px-6 pt-24 pb-16"
       style={{ maxWidth: "680px", margin: "0 auto" }}
     >
-      {/* Headshot placeholder — swap src when real photo is ready */}
-      <div
-        className="w-20 h-20 rounded-full mb-8 flex items-center justify-center text-xs select-none"
-        style={{
-          background: "var(--bg-panel)",
-          color: "var(--fg-muted)",
-          border: "2px dashed var(--fg-muted)",
-          flexShrink: 0,
-        }}
-        aria-label="Headshot — TODO: add real photo"
-        title="TODO: headshot"
-      >
-        PHOTO
-      </div>
+      {profile.headshot && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={profile.headshot}
+          alt="Franz Cadiente"
+          className="w-20 h-20 rounded-full mb-8 object-cover object-top"
+          style={{ flexShrink: 0 }}
+        />
+      )}
 
       <p
         className="text-xs font-mono mb-3 uppercase tracking-widest"
@@ -54,10 +49,17 @@ export function FastHero() {
       </h1>
 
       <p
-        className="text-xl md:text-2xl font-medium mb-10 leading-snug"
+        className="text-xl md:text-2xl font-medium mb-6 leading-snug"
         style={{ color: "var(--cyan)", maxWidth: "480px" }}
       >
         {hero.tagline}
+      </p>
+
+      <p
+        className="text-base leading-relaxed mb-10"
+        style={{ color: "var(--fg-muted)", maxWidth: "560px" }}
+      >
+        {profile.bio}
       </p>
 
       {/* Primary CTAs */}
@@ -79,7 +81,7 @@ export function FastHero() {
       </div>
 
       {/* Social links */}
-      <div className="flex gap-3 mb-16">
+      <div className="flex gap-3">
         <a
           href={contact.github}
           target="_blank"
@@ -101,23 +103,6 @@ export function FastHero() {
           <LinkedInIcon /> LinkedIn
         </a>
       </div>
-
-      {/* Section nav */}
-      <nav aria-label="Page sections">
-        <ul className="flex flex-wrap gap-x-6 gap-y-2">
-          {[
-            { href: "#projects", label: "Projects" },
-            { href: "#profile",  label: "About" },
-            { href: "#contact",  label: "Contact" },
-          ].map(({ href, label }) => (
-            <li key={href}>
-              <a href={href} className="text-sm hover:underline" style={{ color: "var(--fg-muted)" }}>
-                {label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
     </section>
   );
 }
