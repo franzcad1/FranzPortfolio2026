@@ -123,8 +123,19 @@ export function ProjectDetail({ projectId, onBack, onContact, onFullPortfolio }:
               >
                 {label}
               </dt>
-              <dd className="text-sm leading-relaxed" style={{ color: "var(--fg)" }}>
-                {value}
+              <dd className="text-sm leading-relaxed flex flex-col gap-3" style={{ color: "var(--fg)" }}>
+                {value.split("\n\n").map((para, i) => (
+                  <p key={i}>
+                    {para}
+                    {label === "Result" && "resultLinks" in project && project.resultLinks?.[i] && (
+                      <> <a href={project.resultLinks[i].url} target="_blank" rel="noopener noreferrer" className="underline hover:opacity-80" style={{ color: accent }}> Read more →</a></>
+                    )}
+                    {label === "Result" && "resultImages" in project && project.resultImages?.[i] && (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <span className="block mt-3"><img src={project.resultImages[i]!} alt="" className="rounded-lg w-full" style={{ border: `1px solid ${accent}33` }} /></span>
+                    )}
+                  </p>
+                ))}
               </dd>
             </div>
           ))}

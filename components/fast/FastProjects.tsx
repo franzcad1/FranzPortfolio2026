@@ -62,7 +62,20 @@ function ProjectDetail({ projectId, onClose }: { projectId: string; onClose: () 
               <dt className="text-xs font-semibold uppercase tracking-wider mb-3 pb-2" style={{ color: accent, borderBottom: `1px solid ${accent}33` }}>
                 {label}
               </dt>
-              <dd className="text-sm leading-relaxed" style={{ color: "var(--fg)" }}>{value}</dd>
+              <dd className="text-sm leading-relaxed flex flex-col gap-3" style={{ color: "var(--fg)" }}>
+                {value.split("\n\n").map((para, i) => (
+                  <p key={i}>
+                    {para}
+                    {label === "Result" && "resultLinks" in project && project.resultLinks?.[i] && (
+                      <> <a href={project.resultLinks[i].url} target="_blank" rel="noopener noreferrer" className="underline hover:opacity-80" style={{ color: accent }}> Read more →</a></>
+                    )}
+                    {label === "Result" && "resultImages" in project && project.resultImages?.[i] && (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <span className="block mt-3"><img src={project.resultImages[i]!} alt="" className="rounded-lg w-full" style={{ border: `1px solid ${accent}33` }} /></span>
+                    )}
+                  </p>
+                ))}
+              </dd>
             </div>
           ))}
 
@@ -86,6 +99,13 @@ function ProjectDetail({ projectId, onClose }: { projectId: string; onClose: () 
 
         {(project.links.live || project.links.github) && (
           <div className="flex flex-wrap gap-3 mt-10 pt-8" style={{ borderTop: `1px solid ${accent}22` }}>
+            <button
+              onClick={onClose}
+              className="inline-flex items-center text-sm font-medium px-5 py-2.5 rounded-lg transition-colors"
+              style={{ border: `1px solid rgba(255,255,255,0.15)`, color: "var(--fg-muted)", background: "transparent", cursor: "pointer" }}
+            >
+              ← Back
+            </button>
             {project.links.live && (
               <a href={project.links.live} target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center text-sm font-semibold px-5 py-2.5 rounded-lg transition-opacity hover:opacity-90"

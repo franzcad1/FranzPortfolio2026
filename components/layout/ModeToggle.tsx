@@ -2,7 +2,7 @@
 import { useMode } from "@/lib/ModeContext";
 
 export function ModeToggle() {
-  const { mode, toggle, soundEnabled, toggleSound, crtEnabled, toggleCrt } = useMode();
+  const { mode, toggle, soundEnabled, toggleSound } = useMode();
 
   return (
     <div
@@ -10,19 +10,6 @@ export function ModeToggle() {
       role="toolbar"
       aria-label="Display controls"
     >
-      {/* CRT toggle — only in arcade mode */}
-      {mode === "arcade" && (
-        <button
-          onClick={toggleCrt}
-          title={crtEnabled ? "Disable CRT overlay" : "Enable CRT overlay"}
-          aria-pressed={crtEnabled}
-          className="px-2 py-1 text-[8px] border border-current rounded cursor-pointer opacity-60 hover:opacity-100 transition-opacity"
-          style={{ fontFamily: "var(--font-pixel)", color: "var(--fg-muted)" }}
-        >
-          CRT {crtEnabled ? "ON" : "OFF"}
-        </button>
-      )}
-
       {/* Sound toggle */}
       <button
         onClick={toggleSound}

@@ -68,9 +68,9 @@ export const levels = [
     subtitle: "AI Engineer",
     script:
       "What started as helping the clinics I worked for turned into something bigger. Through SEO, I helped dental clinics reach the top of Google Search and strengthen their online presence. That work grew into Cadiente Digital, my own business helping other companies grow through digital marketing, web development, and AI automation.",
-    outfit: "terminal",
-    scene: "terminal",
-    accentColor: "#00e5ff",
+    outfit: "office",
+    scene: "studio",
+    accentColor: "#ff2d78",
   },
   {
     id: 6,
@@ -147,7 +147,12 @@ export const projects = [
     built:
       "Cadiente Digital is a digital growth agency that helps local businesses compete smarter through strategic SEO, paid advertising, web development, and AI-powered automation. By combining proven digital marketing strategies with practical technology, I help businesses strengthen their online visibility, generate leads, and build more efficient systems without the overhead of a full-time marketing team.",
     stack: [],
-    result: "",
+    result: "Leaside Orthodontic Centre: Grew organic traffic from ~80 to 500+ monthly visits. Achieved top 1–3 rankings across 31 Central Toronto areas, driving increased appointment requests and patient referrals.\n\nSnap 'n Sweet: Established #1 AI search visibility for targeted local queries, helping a Toronto-based 360 photobooth business stand out in AI-powered discovery tools beyond traditional search.",
+    resultImages: ["/results/leaside-rankings.webp", "/results/snap-n-sweet-ai.png"],
+    resultLinks: [
+      { label: "Leaside Orthodontic Centre case study", url: "https://cadientedigital.ca/local-seo-near-me/" },
+      { label: "Snap 'n Sweet case study", url: "https://cadientedigital.ca/seo-for-ai-search-engines/" },
+    ],
     preview: "/previews/cadiente-digital.png",
     links: {
       live: "https://cadientedigital.ca",
