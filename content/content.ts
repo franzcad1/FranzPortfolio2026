@@ -2,7 +2,7 @@
 // Never add em dashes. Keep level scripts to 2-3 sentences max.
 
 export const meta = {
-  title: "Franz Cadiente — AI Engineer",
+  title: "Franz Cadiente — AI Engineer | Full-Stack Developer | Founder",
   description:
     "I build AI automation that runs in production. Portfolio of Franz Cadiente — AI engineer and founder of Cadiente Digital.",
   url: "https://franzcadiente.com", // TODO: update with real domain
@@ -11,7 +11,7 @@ export const meta = {
 
 export const hero = {
   name: "Franz Cadiente",
-  tagline: "I build AI automation that runs in production.",
+  tagline: "I engineer AI tools, ship full-stack products, and run a digital agency.",
   pressStart: "PRESS START",
 };
 
@@ -65,7 +65,7 @@ export const levels = [
     id: 5,
     slug: "final-boss",
     title: "LEVEL 5: FINAL BOSS",
-    subtitle: "AI Engineer",
+    subtitle: "AI Engineer & Founder",
     script:
       "What started as helping the clinics I worked for turned into something bigger. Through SEO, I helped dental clinics reach the top of Google Search and strengthen their online presence. That work grew into Cadiente Digital, my own business helping other companies grow through digital marketing, web development, and AI automation.",
     outfit: "office",
@@ -76,7 +76,7 @@ export const levels = [
     id: 6,
     slug: "ai-engineer",
     title: "LEVEL 6: AI ENGINEER",
-    subtitle: "AI Engineer",
+    subtitle: "AI Engineer | Full-Stack Dev | Founder",
     script:
       "I also built DentalAI, bringing my software development background back into healthcare to solve real clinical problems. Today, I continue to build new projects, explore emerging technologies, and turn ideas into working products. The kid who grew up fascinated by computers never stopped building. He just found new problems worth solving.",
     outfit: "terminal",

@@ -38,7 +38,7 @@ export function FastHero() {
         className="text-xs font-mono mb-3 uppercase tracking-widest"
         style={{ color: "var(--fg-muted)" }}
       >
-        AI Engineer · GTA, Canada
+        AI Engineer · Full-Stack Dev · Founder · GTA, Canada
       </p>
 
       <h1

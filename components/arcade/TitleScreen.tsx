@@ -89,7 +89,7 @@ export function TitleScreen({ onStart }: Props) {
             lineHeight: 1.5,
           }}
         >
-          AI ENGINEER
+          AI ENGINEER · FULL-STACK DEV · FOUNDER
         </h1>
 
         <p
