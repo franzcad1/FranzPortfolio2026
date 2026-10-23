@@ -10,12 +10,12 @@ export function ModeToggle() {
       role="toolbar"
       aria-label="Display controls"
     >
-      {/* Sound toggle */}
+      {/* Sound toggle — hidden on mobile */}
       <button
         onClick={toggleSound}
         title={soundEnabled ? "Mute sound effects" : "Enable sound effects"}
         aria-pressed={soundEnabled}
-        className="px-2 py-1 text-[8px] border border-current rounded cursor-pointer opacity-60 hover:opacity-100 transition-opacity"
+        className="hidden sm:block px-2 py-1 text-[8px] border border-current rounded cursor-pointer opacity-60 hover:opacity-100 transition-opacity"
         style={{ fontFamily: "var(--font-pixel)", color: "var(--fg-muted)" }}
       >
         SFX {soundEnabled ? "ON" : "OFF"}
@@ -25,7 +25,7 @@ export function ModeToggle() {
       <button
         onClick={toggle}
         title={mode === "arcade" ? "Switch to readable layout" : "Switch to arcade layout"}
-        className="px-3 py-1 text-[8px] border-2 rounded cursor-pointer font-bold transition-colors"
+        className="px-2 py-1 text-[7px] sm:px-3 sm:text-[8px] border-2 rounded cursor-pointer font-bold transition-colors"
         style={{
           fontFamily: "var(--font-pixel)",
           borderColor: mode === "arcade" ? "var(--cyan)" : "var(--magenta)",
