@@ -74,8 +74,17 @@ const scenes: Record<string, React.ReactNode> = {
     />
   ),
 
-  // Level 4 — Clinic front desk
+  // Level 4 — Clinic front desk (photo background)
   "clinic-desk": (
+    <img
+      src="/backgrounds/level4.jpg"
+      alt=""
+      style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }}
+    />
+  ),
+
+  // Level 4 — Clinic front desk SVG fallback (unused)
+  "clinic-desk-svg": (
     <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
       <rect width="320" height="180" fill="#0c0c18"/>
       {/* Reception desk */}

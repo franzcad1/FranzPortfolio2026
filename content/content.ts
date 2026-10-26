@@ -23,7 +23,7 @@ export const levels = [
     title: "LEVEL 1: TAKEOFF",
     subtitle: "Leaving the Philippines",
     script:
-      "My mom says I was using a computer before I could even speak.\n\nGrowing up in the Philippines, my childhood revolved around PlayStation, video games, and the worlds I could explore through a screen.\n\nAt 19, I moved to Canada alone to study game programming and software development.\n\nI was giving the kid who loved video games a chance to build something of his own.",
+      "Growing up in the Philippines, my childhood revolved around PlayStation, video games, and the worlds I could explore through a screen.\n\nAt 19, I moved to Canada alone to study game programming and software development.\n\nI was giving the kid who loved video games a chance to build something of his own.",
     outfit: "backpack",
     scene: "airport",
     accentColor: "#00e5ff",

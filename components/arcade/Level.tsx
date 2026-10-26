@@ -68,14 +68,14 @@ export function Level({ level, isActive, onVisible, onNext }: Props) {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: ["airport","campus","dental-chair","studio"].includes(level.scene)
+          background: ["airport","campus","dental-chair","studio","clinic-desk"].includes(level.scene)
             ? "rgba(0,0,0,0.55)"
             : `radial-gradient(ellipse at 50% 80%, ${level.accentColor}0a 0%, transparent 70%)`,
         }}
         aria-hidden="true"
       />
       {/* Accent color wash */}
-      {["airport","campus","dental-chair","studio"].includes(level.scene) && (
+      {["airport","campus","dental-chair","studio","clinic-desk"].includes(level.scene) && (
         <div
           className="absolute inset-0 pointer-events-none"
           style={{ background: `radial-gradient(ellipse at 50% 80%, ${level.accentColor}12 0%, transparent 70%)` }}
