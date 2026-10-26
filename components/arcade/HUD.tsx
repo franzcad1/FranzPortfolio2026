@@ -22,9 +22,9 @@ export function HUD({ currentLevel, onJump }: Props) {
       aria-label="Level navigation"
     >
       <div className="hidden sm:flex items-center gap-3 px-4 py-2" style={{ maxWidth: "900px", margin: "0 auto" }}>
-        {/* Progress bar */}
+        {/* Progress bar — hide on smaller desktops to avoid overlap with mode toggle */}
         <div
-          className="relative flex-1 h-1.5 rounded-full overflow-hidden"
+          className="relative flex-1 h-1.5 rounded-full overflow-hidden hidden lg:block"
           style={{ background: "rgba(255,255,255,0.08)" }}
           role="progressbar"
           aria-valuenow={currentLevel}
@@ -89,7 +89,7 @@ export function HUD({ currentLevel, onJump }: Props) {
 
         {/* Level label */}
         <p
-          className="hidden sm:block text-[8px] shrink-0"
+          className="hidden lg:block text-[8px] shrink-0"
           style={{ fontFamily: "var(--font-pixel)", color: "var(--fg-muted)", maxWidth: 120 }}
           aria-hidden="true"
         >
