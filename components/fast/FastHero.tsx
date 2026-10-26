@@ -24,20 +24,58 @@ export function FastHero() {
       className="relative px-6 pt-24 pb-16"
       style={{ maxWidth: "900px", margin: "0 auto" }}
     >
-      {/* Large sprite — right side, desktop only */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src="/sprites/Level5Idle.gif"
-        alt=""
-        aria-hidden="true"
+      {/* Large sprite + floor grid — right side, desktop only */}
+      <div
         className="hidden md:block absolute"
-        style={{
-          width: 200, height: 200,
-          objectFit: "contain", objectPosition: "bottom",
-          imageRendering: "pixelated",
-          right: 24, bottom: 64,
-        }}
-      />
+        style={{ width: 300, height: 360, right: 0, bottom: 200 }}
+        aria-hidden="true"
+      >
+        {/* Wall dot grid — behind character */}
+        <div style={{
+          position: "absolute",
+          inset: 0,
+          backgroundImage: `radial-gradient(circle, rgba(0,229,255,0.35) 1px, transparent 1px)`,
+          backgroundSize: "24px 24px",
+          maskImage: "radial-gradient(ellipse 90% 80% at 50% 40%, black 30%, transparent 100%)",
+          WebkitMaskImage: "radial-gradient(ellipse 90% 80% at 50% 40%, black 30%, transparent 100%)",
+          animation: "gridBreathe 3s ease-in-out infinite",
+        }} />
+
+        {/* Floor grid */}
+        <div style={{
+          position: "absolute",
+          bottom: -20,
+          left: "50%",
+          transform: "translateX(-50%) perspective(180px) rotateX(62deg)",
+          transformOrigin: "bottom center",
+          width: 340,
+          height: 220,
+          backgroundImage: `linear-gradient(rgba(0,229,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(0,229,255,0.5) 1px, transparent 1px)`,
+          backgroundSize: "32px 20px",
+          maskImage: "linear-gradient(to top, black 30%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to top, black 30%, transparent 100%)",
+          animation: "gridBreathe 3s ease-in-out infinite",
+        }} />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/sprites/Level5Idle.gif"
+          alt=""
+          style={{
+            position: "absolute", bottom: 0, left: "50%",
+            transform: "translateX(-50%)",
+            width: 260, height: 260,
+            objectFit: "contain", objectPosition: "bottom",
+            imageRendering: "pixelated",
+          }}
+        />
+      </div>
+
+      <style>{`
+        @keyframes gridBreathe {
+          0%, 100% { opacity: 0.5; }
+          50% { opacity: 1; }
+        }
+      `}</style>
 
       <div className="flex flex-col" style={{ maxWidth: "560px" }}>
         {profile.headshot && (
