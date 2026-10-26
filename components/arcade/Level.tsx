@@ -95,7 +95,7 @@ export function Level({ level, isActive, onVisible, onNext }: Props) {
           transition={{ duration: reduced ? 0 : 0.45, ease: "easeOut" }}
           className="flex justify-center md:justify-start shrink-0"
         >
-          <div style={level.scene === "dental-chair" ? { marginLeft: "-48px" } : undefined}>
+          <div style={level.scene === "dental-chair" ? { marginLeft: "-48px" } : level.scene === "studio" ? { marginBottom: "-48px" } : undefined}>
             <Sprite outfit={level.outfit} walking={false} scale={3} />
           </div>
         </motion.div>

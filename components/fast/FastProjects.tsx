@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { projects } from "@/content/content";
 
 const accentByProject: Record<string, string> = {
@@ -129,6 +129,17 @@ function ProjectDetail({ projectId, onClose }: { projectId: string; onClose: () 
 
 export function FastProjects() {
   const [selected, setSelected] = useState<string | null>(null);
+  const [highlighted, setHighlighted] = useState<string | null>(null);
+
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const id = (e as CustomEvent<string>).detail;
+      setHighlighted(id);
+      setTimeout(() => setHighlighted(null), 800);
+    };
+    window.addEventListener("highlight-project", handler);
+    return () => window.removeEventListener("highlight-project", handler);
+  }, []);
 
   return (
     <section id="projects" className="py-20" aria-labelledby="projects-heading">
@@ -149,8 +160,10 @@ export function FastProjects() {
               style={{
                 width: 280,
                 background: "var(--bg-panel)",
-                border: `2px solid rgba(255,255,255,0.07)`,
+                border: highlighted === p.id ? `2px solid ${accent}` : `2px solid rgba(255,255,255,0.07)`,
+                boxShadow: highlighted === p.id ? `0 0 32px ${accent}55` : "none",
                 outline: "none",
+                transition: "border 0.15s, box-shadow 0.15s, transform 0.3s",
               }}
               onMouseEnter={(e) => {
                 (e.currentTarget as HTMLElement).style.border = `2px solid ${accent}`;

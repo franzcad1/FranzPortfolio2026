@@ -21,18 +21,34 @@ export function FastHero() {
   return (
     <section
       id="hero"
-      className="flex flex-col px-6 pt-24 pb-16"
-      style={{ maxWidth: "680px", margin: "0 auto" }}
+      className="relative px-6 pt-24 pb-16"
+      style={{ maxWidth: "900px", margin: "0 auto" }}
     >
-      {profile.headshot && (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={profile.headshot}
-          alt="Franz Cadiente"
-          className="w-20 h-20 rounded-full mb-8 object-cover object-top"
-          style={{ flexShrink: 0 }}
-        />
-      )}
+      {/* Large sprite — right side, desktop only */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/sprites/Level5Idle.gif"
+        alt=""
+        aria-hidden="true"
+        className="hidden md:block absolute"
+        style={{
+          width: 200, height: 200,
+          objectFit: "contain", objectPosition: "bottom",
+          imageRendering: "pixelated",
+          right: 24, bottom: 64,
+        }}
+      />
+
+      <div className="flex flex-col" style={{ maxWidth: "560px" }}>
+        {profile.headshot && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={profile.headshot}
+            alt="Franz Cadiente"
+            className="w-20 h-20 rounded-full mb-8 object-cover object-top"
+            style={{ flexShrink: 0 }}
+          />
+        )}
 
       <p
         className="text-xs font-mono mb-3 uppercase tracking-widest"
@@ -98,6 +114,7 @@ export function FastHero() {
         >
           <LinkedInIcon />
         </a>
+      </div>
       </div>
     </section>
   );
