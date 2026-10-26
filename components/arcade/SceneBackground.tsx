@@ -13,8 +13,17 @@ const scenes: Record<string, React.ReactNode> = {
     />
   ),
 
-  // Level 2 — Campus with monitor showing a game
+  // Level 2 — Campus (photo background)
   campus: (
+    <img
+      src="/backgrounds/level2.jpg"
+      alt=""
+      style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }}
+    />
+  ),
+
+  // Level 2 — Campus SVG fallback (unused)
+  campus_svg: (
     <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
       <rect width="320" height="180" fill="#0a0a1a"/>
       {/* Sky */}
@@ -112,61 +121,13 @@ const scenes: Record<string, React.ReactNode> = {
     </svg>
   ),
 
-  // Level 5 — Agency studio with analytics dashboards
+  // Level 5 — Agency studio (photo background)
   studio: (
-    <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
-      <rect width="320" height="180" fill="#0c0810"/>
-      {/* Back wall */}
-      <rect width="320" height="120" fill="#0e0a14"/>
-      {/* Large monitor left */}
-      <rect x="20" y="35" width="120" height="75" rx="3" fill="#080610"/>
-      <rect x="22" y="37" width="116" height="68" rx="2" fill="#100820"/>
-      {/* Analytics bar chart */}
-      {[0,1,2,3,4,5,6].map((i) => {
-        const h = [20,35,15,45,30,50,25][i];
-        return <rect key={i} x={28+i*15} y={90-h} width="10" height={h} fill="#ff2d78" opacity={0.5+i*0.05} rx="1"/>;
-      })}
-      <rect x="22" y="37" width="116" height="10" fill="#1a0a28"/>
-      <rect x="26" y="40" width="40" height="4" fill="#ff2d78" opacity="0.5"/>
-      <rect x="70" y="40" width="25" height="4" fill="#e8e8f0" opacity="0.15"/>
-      {/* Monitor stand */}
-      <rect x="74" y="110" width="12" height="6" fill="#111"/>
-      <rect x="65" y="115" width="30" height="3" fill="#1a1a28"/>
-      {/* Large monitor right */}
-      <rect x="180" y="30" width="125" height="80" rx="3" fill="#080610"/>
-      <rect x="182" y="32" width="121" height="73" rx="2" fill="#0a0618"/>
-      {/* World map dots */}
-      {[[195,55],[210,50],[230,58],[250,52],[270,56],[290,54],[205,65],[245,62],[275,60]].map(([x,y],i) => (
-        <circle key={i} cx={x} cy={y} r="2.5" fill="#ff2d78" opacity={0.4+i*0.04}/>
-      ))}
-      {/* Connecting lines */}
-      <line x1="195" y1="55" x2="210" y2="50" stroke="#ff2d78" strokeWidth="0.5" opacity="0.25"/>
-      <line x1="210" y1="50" x2="230" y2="58" stroke="#ff2d78" strokeWidth="0.5" opacity="0.25"/>
-      <line x1="230" y1="58" x2="250" y2="52" stroke="#ff2d78" strokeWidth="0.5" opacity="0.25"/>
-      <line x1="250" y1="52" x2="270" y2="56" stroke="#ff2d78" strokeWidth="0.5" opacity="0.2"/>
-      {/* KPI tiles */}
-      {[0,1,2].map(i => (
-        <g key={i}>
-          <rect x={185+i*40} y={75} width="34" height="24" rx="1" fill="#180828" opacity="0.9"/>
-          <rect x={187+i*40} y={77} width="20" height="3" fill="#ff2d78" opacity={0.6-i*0.1}/>
-          <rect x={187+i*40} y={82} width="28" height="5" fill="#e8e8f0" opacity="0.2"/>
-          <rect x={187+i*40} y={89} width="15" height="3" fill="#ffe600" opacity={0.3}/>
-        </g>
-      ))}
-      {/* Monitor stand right */}
-      <rect x="236" y="110" width="12" height="6" fill="#111"/>
-      <rect x="227" y="115" width="30" height="3" fill="#1a1a28"/>
-      {/* Desk */}
-      <rect x="0" y="118" width="320" height="12" fill="#16101e"/>
-      <rect x="0" y="118" width="320" height="3" fill="#201428"/>
-      {/* Glow */}
-      <ellipse cx="80" cy="72" rx="55" ry="30" fill="#ff2d78" opacity="0.04"/>
-      <ellipse cx="242" cy="65" rx="60" ry="35" fill="#ff2d78" opacity="0.04"/>
-      {/* Floor */}
-      <rect x="0" y="130" width="320" height="50" fill="#0a0810"/>
-      {/* Floor reflection */}
-      <rect x="0" y="130" width="320" height="2" fill="#1e1028" opacity="0.6"/>
-    </svg>
+    <img
+      src="/backgrounds/level5.avif"
+      alt=""
+      style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }}
+    />
   ),
 
   // Level 6 — Glowing terminal / AI workspace

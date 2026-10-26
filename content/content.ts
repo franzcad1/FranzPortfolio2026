@@ -56,7 +56,7 @@ export const levels = [
     title: "LEVEL 4: SIDE QUEST",
     subtitle: "Treatment Coordinator",
     script:
-      "Moving into treatment coordination and administration gave me a closer look at the challenges dental clinics face every day. But I never let go of the developer in me. I knew I had skills I could put to use beyond my day-to-day role, so I started finding ways to help the clinics I worked for grow and operate more efficiently. From SEO and digital marketing to AI-powered automation, I began applying my technical background to real problems, connecting the world of software with the realities of running a dental practice.",
+      "Moving into treatment coordination and administration gave me a closer look at the challenges dental clinics face every day.\n\nBut I never let go of the developer in me.\n\nI knew I had skills I could put to use beyond my day-to-day role, so I started finding ways to help the clinics I worked for grow and operate more efficiently.\n\nFrom SEO and digital marketing to AI-powered automation, I began applying my technical background to real problems, connecting the world of software with the realities of running a dental practice.",
     outfit: "office",
     scene: "clinic-desk",
     accentColor: "#39ff14",
@@ -67,8 +67,8 @@ export const levels = [
     title: "LEVEL 5: FINAL BOSS",
     subtitle: "AI Engineer & Founder",
     script:
-      "What started as helping the clinics I worked for turned into something bigger. Through SEO, I helped dental clinics reach the top of Google Search and strengthen their online presence. That work grew into Cadiente Digital, my own business helping other companies grow through digital marketing, web development, and AI automation.",
-    outfit: "office",
+      "What started as helping the clinics I worked for turned into something bigger.\n\nThrough SEO, I helped dental clinics reach the top of Google Search and strengthen their online presence.\n\nThat work grew into Cadiente Digital, my own business helping other companies grow through digital marketing, web development, and AI automation.",
+    outfit: "suit",
     scene: "studio",
     accentColor: "#ff2d78",
   },
@@ -78,7 +78,7 @@ export const levels = [
     title: "LEVEL 6: AI ENGINEER",
     subtitle: "AI Engineer | Full-Stack Dev | Founder",
     script:
-      "I also built DentalAI, bringing my software development background back into healthcare to solve real clinical problems. Today, I continue to build new projects, explore emerging technologies, and turn ideas into working products. The kid who grew up fascinated by computers never stopped building. He just found new problems worth solving.",
+      "I also built DentalAI, bringing my software development background back into healthcare to solve real clinical problems.\n\nToday, I continue to build new projects, explore emerging technologies, and turn ideas into working products.\n\nThe kid who grew up fascinated by computers never stopped building. He just found new problems worth solving.",
     outfit: "terminal",
     scene: "terminal",
     accentColor: "#00e5ff",

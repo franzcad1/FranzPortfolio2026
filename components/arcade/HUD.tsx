@@ -21,7 +21,7 @@ export function HUD({ currentLevel, onJump }: Props) {
       role="navigation"
       aria-label="Level navigation"
     >
-      <div className="flex items-center gap-3 px-4 py-2" style={{ maxWidth: "900px", margin: "0 auto" }}>
+      <div className="hidden sm:flex items-center gap-3 px-4 py-2" style={{ maxWidth: "900px", margin: "0 auto" }}>
         {/* Progress bar */}
         <div
           className="relative flex-1 h-1.5 rounded-full overflow-hidden"

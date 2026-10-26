@@ -142,23 +142,45 @@ export function DialogueBox({ text, accentColor, onDone }: Props) {
         )}
       </p>
 
-      {/* Bottom bar: progress dots + next/done button */}
+      {/* Bottom bar: back button + progress dots + next/done button */}
       <div className="flex items-center justify-between mt-3">
-        {/* Sentence progress dots */}
-        <div className="flex gap-1" aria-hidden="true">
-          {lines.map((_, i) => (
-            <span
-              key={i}
-              style={{
-                width: 5,
-                height: 5,
-                borderRadius: "50%",
-                background: i === lineIndex ? accentColor : "rgba(255,255,255,0.2)",
-                display: "inline-block",
-                transition: "background 0.2s",
-              }}
-            />
-          ))}
+        <div className="flex items-center gap-2">
+          {/* Back button — only visible when not on first sentence */}
+          <button
+            onClick={(e) => { e.stopPropagation(); playClick(); setLineIndex(i => i - 1); }}
+            aria-label="Previous sentence"
+            style={{
+              fontFamily: "var(--font-pixel)",
+              fontSize: "8px",
+              color: accentColor,
+              opacity: lineIndex > 0 ? 0.5 : 0,
+              pointerEvents: lineIndex > 0 ? "auto" : "none",
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              padding: 0,
+              transition: "opacity 0.2s",
+            }}
+          >
+            ◀
+          </button>
+
+          {/* Sentence progress dots */}
+          <div className="flex gap-1" aria-hidden="true">
+            {lines.map((_, i) => (
+              <span
+                key={i}
+                style={{
+                  width: 5,
+                  height: 5,
+                  borderRadius: "50%",
+                  background: i === lineIndex ? accentColor : "rgba(255,255,255,0.2)",
+                  display: "inline-block",
+                  transition: "background 0.2s",
+                }}
+              />
+            ))}
+          </div>
         </div>
 
         {/* CTA */}

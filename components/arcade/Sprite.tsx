@@ -250,19 +250,25 @@ export function Sprite({ outfit, walking = false, scale = 3, facing = "right" }:
   const reduced = useReducedMotion();
 
   // Levels with AI-generated GIF sprites
-  if (outfit === "backpack" || outfit === "hoodie" || outfit === "scrubs") {
-    const src =
-      outfit === "backpack" ? "/sprites/Level1Idle.gif" :
-      outfit === "hoodie"   ? "/sprites/Level2Idle.gif" :
-                              "/sprites/Level3Idle.gif";
+  const gifMap: Record<string, string> = {
+    backpack: "/sprites/Level1Idle.gif",
+    hoodie:   "/sprites/Level2Idle.gif",
+    scrubs:   "/sprites/Level3Idle.gif",
+    office:   "/sprites/Level4Idle.gif",
+    suit:     "/sprites/Level5Idle.gif",
+    terminal: "/sprites/Level5Idle.gif",
+  };
+
+  if (outfit in gifMap) {
+    const src = gifMap[outfit];
     return (
       <img
         src={src}
         alt=""
         aria-hidden="true"
         style={{
-          width: 200,
-          height: 200,
+          width: scale >= 3 ? 240 : 200,
+          height: scale >= 3 ? 240 : 200,
           objectFit: "contain",
           objectPosition: "bottom",
           imageRendering: "pixelated",

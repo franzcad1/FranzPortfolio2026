@@ -56,12 +56,24 @@ export function Level({ level, isActive, onVisible, onNext }: Props) {
       {/* Scene art */}
       <SceneBackground scene={level.scene} />
 
-      {/* Subtle color wash */}
+      {/* Dark overlay — stronger for photo backgrounds */}
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{ background: `radial-gradient(ellipse at 50% 80%, ${level.accentColor}0a 0%, transparent 70%)` }}
+        style={{
+          background: ["airport","campus","dental-chair","studio"].includes(level.scene)
+            ? "rgba(0,0,0,0.55)"
+            : `radial-gradient(ellipse at 50% 80%, ${level.accentColor}0a 0%, transparent 70%)`,
+        }}
         aria-hidden="true"
       />
+      {/* Accent color wash */}
+      {["airport","campus","dental-chair","studio"].includes(level.scene) && (
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: `radial-gradient(ellipse at 50% 80%, ${level.accentColor}12 0%, transparent 70%)` }}
+          aria-hidden="true"
+        />
+      )}
 
       {/* Content — mobile: stacked column; desktop: sprite + dialogue row */}
       <div
@@ -75,7 +87,9 @@ export function Level({ level, isActive, onVisible, onNext }: Props) {
           transition={{ duration: reduced ? 0 : 0.45, ease: "easeOut" }}
           className="flex justify-center md:justify-start shrink-0"
         >
-          <Sprite outfit={level.outfit} walking={false} scale={3} />
+          <div style={level.scene === "dental-chair" ? { marginLeft: "-48px" } : undefined}>
+            <Sprite outfit={level.outfit} walking={false} scale={3} />
+          </div>
         </motion.div>
 
         {/* Dialogue box */}
