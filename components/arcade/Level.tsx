@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Sprite } from "./Sprite";
 import { DialogueBox } from "./DialogueBox";
@@ -20,6 +20,7 @@ interface Props {
 export function Level({ level, isActive, onVisible, onNext }: Props) {
   const ref = useRef<HTMLElement>(null);
   const reduced = useReducedMotion();
+  const [showScrollHint, setShowScrollHint] = useState(level.id === 1);
   const { playTransition } = useSound();
   const prevActive = useRef(false);
 
@@ -27,6 +28,13 @@ export function Level({ level, isActive, onVisible, onNext }: Props) {
     if (isActive && !prevActive.current) playTransition();
     prevActive.current = isActive;
   }, [isActive, playTransition]);
+
+  // Hide scroll hint after 3.5s (Level 1 only)
+  useEffect(() => {
+    if (level.id !== 1) return;
+    const t = setTimeout(() => setShowScrollHint(false), 3500);
+    return () => clearTimeout(t);
+  }, [level.id]);
 
   // IntersectionObserver — fires when level crosses 50% visible
   useEffect(() => {
@@ -112,6 +120,29 @@ export function Level({ level, isActive, onVisible, onNext }: Props) {
           />
         </motion.div>
       </div>
+
+      {/* Scroll hint — Level 1 only, fades out after 3.5s */}
+      {level.id === 1 && (
+        <div
+          className="absolute inset-x-0 pointer-events-none"
+          style={{ top: "50%", transform: "translateY(-50%)", display: "flex", justifyContent: "center" }}
+          aria-hidden="true"
+        >
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: showScrollHint ? 0.35 : 0 }}
+            transition={{ duration: 1, ease: "easeInOut" }}
+            style={{
+              fontFamily: "var(--font-pixel)",
+              fontSize: "13px",
+              color: "var(--fg)",
+              letterSpacing: "0.15em",
+            }}
+          >
+            SCROLL TO SKIP
+          </motion.p>
+        </div>
+      )}
 
       {/* Level number — corner watermark */}
       <div

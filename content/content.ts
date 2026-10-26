@@ -11,7 +11,7 @@ export const meta = {
 
 export const hero = {
   name: "Franz Cadiente",
-  tagline: "I engineer AI tools, ship full-stack products, and run a digital agency.",
+  tagline: "I build AI tools that work in the real world.",
   pressStart: "PRESS START",
 };
 
@@ -141,12 +141,12 @@ export const projects = [
     id: "cadiente-digital",
     title: "Cadiente Digital",
     label: "AGENCY",
-    tagline: "GTA-based digital marketing and AI automation for local businesses.",
+    tagline: "GTA-based digital agency helping local businesses grow through SEO, web development, and AI-powered automation.",
     problem:
       "Local businesses across the GTA are expected to compete in an increasingly digital marketplace, but often lack the time, resources, and in-house expertise to manage marketing, maintain a consistent online presence, and streamline operations.",
     built:
       "Cadiente Digital is a digital growth agency that helps local businesses compete smarter through strategic SEO, paid advertising, web development, and AI-powered automation. By combining proven digital marketing strategies with practical technology, I help businesses strengthen their online visibility, generate leads, and build more efficient systems without the overhead of a full-time marketing team.",
-    stack: [],
+    stack: ["SEO", "AI Automation", "Web Development", "Digital Marketing"],
     result: "Leaside Orthodontic Centre: Grew organic traffic from ~80 to 500+ monthly visits. Achieved top 1–3 rankings across 31 Central Toronto areas, driving increased appointment requests and patient referrals.\n\nSnap 'n Sweet: Established #1 AI search visibility for targeted local queries, helping a Toronto-based 360 photobooth business stand out in AI-powered discovery tools beyond traditional search.",
     resultImages: ["/results/leaside-rankings.webp", "/results/snap-n-sweet-ai.png"],
     resultLinks: [
@@ -166,7 +166,7 @@ export const projects = [
 export const profile = {
   name: "Franz Cadiente",
   location: "Greater Toronto Area, Canada",
-  bio: "My journey has taken me across software development, healthcare operations, and digital marketing, where I discovered how technology can solve real-world problems. Today, I bring those experiences together to build AI-powered systems and software that make work more efficient, solve meaningful problems, and deliver value to the people who use them.",
+  bio: "I started with a love for video games and computers, studied software development, found myself working in healthcare, and eventually began building technology to solve the problems I saw firsthand. Now, I build AI-powered software, automate business operations, and run Cadiente Digital, where I help businesses grow through technology.",
   // TODO: add real headshot path
   headshot: "/headshot.jpg",
   // TODO: add real work photo path
@@ -176,8 +176,10 @@ export const profile = {
       label: "AI / Automation",
       skills: [
         { name: "OpenAI API / LLMs", level: 90 },
-        { name: "Workflow automation", level: 85 },
+        { name: "LangChain", level: 80 },
+        { name: "Groq", level: 78 },
         { name: "Prompt engineering", level: 88 },
+        { name: "Workflow automation", level: 85 },
       ],
     },
     {
@@ -189,11 +191,27 @@ export const profile = {
       ],
     },
     {
+      label: "Back-End",
+      skills: [
+        { name: "Python", level: 82 },
+        { name: "FastAPI", level: 80 },
+        { name: "REST APIs", level: 85 },
+      ],
+    },
+    {
       label: "Cloud / Infra",
       skills: [
-        { name: "AWS EC2", level: 75 },
         { name: "Vercel", level: 85 },
-        { name: "TODO: add more", level: 0 },
+        { name: "Railway", level: 78 },
+        { name: "AWS EC2", level: 75 },
+      ],
+    },
+    {
+      label: "Digital Marketing",
+      skills: [
+        { name: "SEO", level: 88 },
+        { name: "Google Ads", level: 75 },
+        { name: "Analytics", level: 78 },
       ],
     },
   ],

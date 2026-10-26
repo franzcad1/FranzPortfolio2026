@@ -132,7 +132,7 @@ export function FastProjects() {
 
   return (
     <section id="projects" className="py-20" aria-labelledby="projects-heading">
-      <h2 id="projects-heading" className="text-2xl font-bold mb-8 px-6" style={{ color: "var(--fg)", maxWidth: "680px", margin: "0 auto 2rem" }}>
+      <h2 id="projects-heading" className="mb-8 px-6 text-xs tracking-widest uppercase" style={{ fontFamily: "var(--font-pixel)", color: "var(--cyan)", maxWidth: "680px", margin: "0 auto 2rem" }}>
         Projects
       </h2>
 
@@ -179,10 +179,10 @@ export function FastProjects() {
               )}
 
               <h3 className="text-lg font-bold mb-2" style={{ color: "var(--fg)" }}>{p.title}</h3>
-              <p className="text-sm leading-relaxed flex-1 mb-4" style={{ color: "var(--fg-muted)" }}>{p.tagline}</p>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--fg-muted)" }}>{p.tagline}</p>
 
               {/* Stack pills */}
-              <div className="flex flex-wrap gap-1.5 mb-4">
+              <div className="flex flex-wrap gap-1.5 mb-4 mt-auto">
                 {p.stack.slice(0, 3).map((s) => (
                   <span key={s} className="text-[9px] px-2 py-0.5 rounded font-mono" style={{ background: "rgba(255,255,255,0.05)", color: "var(--fg-muted)", border: "1px solid rgba(255,255,255,0.08)" }}>
                     {s}

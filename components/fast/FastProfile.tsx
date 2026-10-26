@@ -11,8 +11,8 @@ export function FastProfile() {
     >
       <h2
         id="profile-heading"
-        className="text-2xl font-bold mb-10"
-        style={{ color: "var(--fg)" }}
+        className="mb-10 text-xs tracking-widest uppercase"
+        style={{ fontFamily: "var(--font-pixel)", color: "var(--cyan)" }}
       >
         About
       </h2>
@@ -54,8 +54,8 @@ export function FastSkills() {
     >
       <h2
         id="skills-heading"
-        className="text-2xl font-bold mb-10"
-        style={{ color: "var(--fg)" }}
+        className="mb-10 text-xs tracking-widest uppercase"
+        style={{ fontFamily: "var(--font-pixel)", color: "var(--cyan)" }}
       >
         Skills
       </h2>

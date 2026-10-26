@@ -38,7 +38,7 @@ export function FastHero() {
         className="text-xs font-mono mb-3 uppercase tracking-widest"
         style={{ color: "var(--fg-muted)" }}
       >
-        AI Engineer · Full-Stack Dev · Founder · GTA, Canada
+        AI Engineer · Full-Stack Dev · Founder
       </p>
 
       <h1
@@ -65,42 +65,38 @@ export function FastHero() {
       {/* Primary CTAs */}
       <div className="flex flex-wrap gap-3 mb-6">
         <a
-          href="#projects"
-          className="px-5 py-2.5 rounded font-semibold text-sm transition-opacity hover:opacity-90 focus-visible:outline-2"
+          href={`mailto:${contact.email}`}
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded font-semibold text-sm transition-opacity hover:opacity-90"
           style={{ background: "var(--cyan)", color: "var(--bg)" }}
         >
-          See my work
-        </a>
-        <a
-          href={`mailto:${contact.email}`}
-          className="px-5 py-2.5 rounded font-semibold text-sm transition-colors hover:border-current focus-visible:outline-2"
-          style={{ border: "1.5px solid var(--fg-muted)", color: "var(--fg)" }}
-        >
-          Email me
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+          Say hi!
         </a>
       </div>
 
-      {/* Social links */}
+      {/* Social links — icon only */}
       <div className="flex gap-3">
         <a
           href={contact.github}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-4 py-2 rounded text-sm transition-colors hover:border-white"
-          style={{ border: "1.5px solid rgba(255,255,255,0.15)", color: "var(--fg-muted)" }}
           aria-label="GitHub"
+          className="flex items-center justify-center rounded-lg transition-opacity hover:opacity-80"
+          style={{ width: 40, height: 40, border: "1px solid rgba(255,255,255,0.15)", color: "var(--fg-muted)", background: "rgba(255,255,255,0.04)" }}
         >
-          <GitHubIcon /> GitHub
+          <GitHubIcon />
         </a>
         <a
           href={contact.linkedin}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-4 py-2 rounded text-sm transition-colors hover:border-white"
-          style={{ border: "1.5px solid rgba(255,255,255,0.15)", color: "var(--fg-muted)" }}
           aria-label="LinkedIn"
+          className="flex items-center justify-center rounded-lg transition-opacity hover:opacity-80"
+          style={{ width: 40, height: 40, border: "1px solid rgba(255,255,255,0.15)", color: "var(--fg-muted)", background: "rgba(255,255,255,0.04)" }}
         >
-          <LinkedInIcon /> LinkedIn
+          <LinkedInIcon />
         </a>
       </div>
     </section>
