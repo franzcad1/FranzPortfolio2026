@@ -4,50 +4,13 @@
 // Each scene is designed on a 320×180 grid (16:9), scaled to fill viewport
 
 const scenes: Record<string, React.ReactNode> = {
-  // Level 1 — Airport gate, pixel plane crossing the sky
+  // Level 1 — Airport (photo background)
   airport: (
-    <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
-      {/* Sky gradient */}
-      <rect width="320" height="100" fill="#0a0a2e"/>
-      <rect y="100" width="320" height="80" fill="#12121e"/>
-      {/* Stars */}
-      {[40,80,130,190,240,280,20,160,300,60,220].map((x,i) => (
-        <rect key={i} x={x} y={8+(i*7)%50} width="2" height="2" fill="#e8e8f0" opacity={0.4+(i%3)*0.2}/>
-      ))}
-      {/* Moon */}
-      <circle cx="260" cy="30" r="12" fill="#ffe600" opacity="0.9"/>
-      <circle cx="265" cy="27" r="10" fill="#0a0a2e"/>
-      {/* Pixel plane */}
-      <g transform="translate(40,45)">
-        <rect x="0" y="4" width="40" height="10" fill="#e8e8f0"/>
-        <rect x="30" y="2" width="12" height="6" fill="#00e5ff"/>
-        <rect x="8" y="0" width="16" height="5" fill="#e8e8f0"/>
-        <rect x="0" y="12" width="10" height="4" fill="#e8e8f0"/>
-        <rect x="42" y="6" width="6" height="3" fill="#aaa"/>
-        {/* Engine glow */}
-        <rect x="2" y="10" width="4" height="2" fill="#ff2d78" opacity="0.8"/>
-      </g>
-      {/* Gate building */}
-      <rect x="0" y="110" width="320" height="70" fill="#12121e"/>
-      <rect x="20" y="95" width="100" height="85" fill="#1a1a2e"/>
-      <rect x="180" y="100" width="120" height="80" fill="#1a1a2e"/>
-      {/* Windows */}
-      {[30,50,70,90].map(x => (
-        <rect key={x} x={x} y={105} width="12" height="10" fill="#00e5ff" opacity="0.4"/>
-      ))}
-      {[190,215,240,265].map(x => (
-        <rect key={x} x={x} y={110} width="12" height="10" fill="#ffe600" opacity="0.3"/>
-      ))}
-      {/* Runway lights */}
-      {[60,90,120,150,180,210,240,270].map(x => (
-        <rect key={x} x={x} y={172} width="4" height="4" fill="#ffe600" opacity={0.6}/>
-      ))}
-      {/* Floor */}
-      <rect x="0" y="165" width="320" height="15" fill="#0e0e1a"/>
-      {/* Gate sign */}
-      <rect x="110" y="98" width="60" height="14" fill="#00e5ff" opacity="0.15"/>
-      <rect x="112" y="100" width="56" height="10" fill="none" stroke="#00e5ff" strokeWidth="1" opacity="0.4"/>
-    </svg>
+    <img
+      src="/backgrounds/level1.png"
+      alt=""
+      style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }}
+    />
   ),
 
   // Level 2 — Campus with monitor showing a game
@@ -93,49 +56,13 @@ const scenes: Record<string, React.ReactNode> = {
     </svg>
   ),
 
-  // Level 3 — Dental operatory
+  // Level 3 — Dental operatory (photo background)
   "dental-chair": (
-    <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
-      <rect width="320" height="180" fill="#0c1218"/>
-      {/* Ceiling light */}
-      <rect x="100" y="0" width="120" height="8" fill="#1a2830"/>
-      <rect x="130" y="8" width="60" height="4" fill="#2a3840"/>
-      <ellipse cx="160" cy="24" rx="30" ry="16" fill="#ffe600" opacity="0.15"/>
-      <ellipse cx="160" cy="22" rx="20" ry="10" fill="#ffe600" opacity="0.25"/>
-      <circle cx="160" cy="20" r="10" fill="#fff" opacity="0.8"/>
-      {/* Dental chair */}
-      <rect x="60" y="110" width="180" height="20" fill="#1e3040"/>
-      <rect x="80" y="90" width="140" height="25" fill="#1e3040"/>
-      <rect x="100" y="70" width="60" height="25" fill="#1e3040"/>
-      {/* Chair arm */}
-      <rect x="230" y="100" width="20" height="40" fill="#16222e"/>
-      <rect x="228" y="95" width="25" height="10" fill="#1e3040"/>
-      {/* Tray */}
-      <rect x="220" y="85" width="60" height="6" fill="#2a4050"/>
-      {/* Instruments on tray */}
-      <rect x="225" y="80" width="2" height="10" fill="#ccc"/>
-      <rect x="230" y="79" width="2" height="12" fill="#aaa"/>
-      <rect x="235" y="81" width="2" height="8" fill="#ccc"/>
-      <rect x="240" y="78" width="2" height="14" fill="#bbb"/>
-      {/* Monitor on wall */}
-      <rect x="10" y="40" width="60" height="45" fill="#0a0a12"/>
-      <rect x="12" y="42" width="56" height="38" fill="#001a2a"/>
-      <rect x="14" y="44" width="20" height="6" fill="#00e5ff" opacity="0.5"/>
-      <rect x="14" y="52" width="30" height="2" fill="#ffe600" opacity="0.4"/>
-      <rect x="14" y="56" width="25" height="2" fill="#ffe600" opacity="0.3"/>
-      {/* Floor */}
-      <rect x="0" y="150" width="320" height="30" fill="#0a1018"/>
-      {/* Floor tile lines */}
-      {[0,40,80,120,160,200,240,280].map(x => (
-        <rect key={x} x={x} y={150} width="1" height="30" fill="#111820"/>
-      ))}
-      <rect x="0" y="165" width="320" height="1" fill="#111820"/>
-      {/* Cabinet */}
-      <rect x="250" y="60" width="65" height="90" fill="#0e1e2c"/>
-      <rect x="255" y="65" width="25" height="35" fill="#122030"/>
-      <rect x="285" y="65" width="25" height="35" fill="#122030"/>
-      <rect x="255" y="105" width="55" height="40" fill="#0e1c28"/>
-    </svg>
+    <img
+      src="/backgrounds/level3.jpg"
+      alt=""
+      style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }}
+    />
   ),
 
   // Level 4 — Clinic front desk

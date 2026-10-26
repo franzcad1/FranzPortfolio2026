@@ -34,7 +34,7 @@ export const levels = [
     title: "LEVEL 2: THE FOUNDATION",
     subtitle: "Game Programming Degree",
     script:
-      "Studying software development gave me the foundation to turn ideas into working solutions. Through my coursework and co-op experience, I got to apply what I was learning to real-world problems and see how technology works beyond the classroom. It was where I started connecting what I knew with what I could actually build.",
+      "Studying game programming and software development taught me to think in systems, break complex problems into smaller pieces, and turn ideas into working solutions.\n\nThrough my co-op experience, I got to apply those skills in real-world environments and see how software development translates into practical results.\n\nI didn't know it yet, but those lessons would follow me far beyond the classroom.",
     outfit: "hoodie",
     scene: "campus",
     accentColor: "#ffe600",
@@ -45,7 +45,7 @@ export const levels = [
     title: "LEVEL 3: THE DETOUR",
     subtitle: "Dental Assistant",
     script:
-      "Upon graduating, my focus shifted from building a career in tech to finding my footing in Canada. Navigating the path to permanent residency meant making practical decisions, and dentistry became an unexpected part of my journey. Working in dental clinics taught me to perform under pressure, earn people's trust, and understand the challenges behind day-to-day operations. What started as a detour became an opportunity to see firsthand where technology could make a real difference.",
+      "Upon graduating, my focus shifted from building a career in tech to finding my footing in Canada.\n\nNavigating the path to permanent residency meant making practical decisions, and dentistry became an unexpected part of my journey.\n\nWorking in dental clinics taught me to perform under pressure, earn people's trust, and understand the challenges behind day-to-day operations.\n\nWhat started as a detour became an opportunity to see firsthand where technology could make a real difference.",
     outfit: "scrubs",
     scene: "dental-chair",
     accentColor: "#ff2d78",

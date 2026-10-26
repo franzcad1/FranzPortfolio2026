@@ -249,11 +249,15 @@ interface Props {
 export function Sprite({ outfit, walking = false, scale = 3, facing = "right" }: Props) {
   const reduced = useReducedMotion();
 
-  // Level 1 uses the AI-generated idle GIF
-  if (outfit === "backpack") {
+  // Levels with AI-generated GIF sprites
+  if (outfit === "backpack" || outfit === "hoodie" || outfit === "scrubs") {
+    const src =
+      outfit === "backpack" ? "/sprites/Level1Idle.gif" :
+      outfit === "hoodie"   ? "/sprites/Level2Idle.gif" :
+                              "/sprites/Level3Idle.gif";
     return (
       <img
-        src="/sprites/Level1Idle.gif"
+        src={src}
         alt=""
         aria-hidden="true"
         style={{
