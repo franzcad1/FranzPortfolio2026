@@ -25,6 +25,7 @@ export function ModeToggle() {
       <button
         onClick={toggle}
         title={mode === "arcade" ? "Switch to readable layout" : "Switch to arcade layout"}
+        suppressHydrationWarning
         className="px-2 py-1 text-[7px] sm:px-3 sm:text-[8px] border-2 rounded cursor-pointer font-bold transition-colors"
         style={{
           fontFamily: "var(--font-pixel)",
@@ -33,7 +34,7 @@ export function ModeToggle() {
           background:  "transparent",
         }}
       >
-        {mode === "arcade" ? "FAST MODE" : "ARCADE MODE"}
+        {mode === "arcade" ? "SKIP TO PORTFOLIO" : "ARCADE MODE"}
       </button>
     </div>
   );

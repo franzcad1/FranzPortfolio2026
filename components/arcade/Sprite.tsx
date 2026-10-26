@@ -1,5 +1,74 @@
 "use client";
+import { useState, useEffect } from "react";
 import { useReducedMotion } from "@/lib/hooks/useReducedMotion";
+
+// Sprite sheet layout from CSS export (spritesheet tool)
+// Source: franz-level1.webp — displayed via backgroundSize scaling
+// Frame grid: 4 cols × 5 rows, frame display size 106×176 at scale=1
+// Content lives in cols 1 & 2 only (cols 0 and 3 are empty padding)
+const SHEET = {
+  src: "/sprites/franz-level1.webp",
+  cols: 4,
+  rows: 5,
+  fw: 106,  // frame width at scale 1 (from CSS export)
+  fh: 176,  // frame height at scale 1
+  // Row → animation mapping
+  idleRow: 0,
+  walkRightRow: 1,
+  walkLeftRow: 2,
+  walkTowardRow: 3,
+  jumpRow: 4,
+  // Animated frame columns (cols 1 & 2 have character pixels)
+  frameA: 1,
+  frameB: 2,
+};
+
+function SheetSprite({
+  walking,
+  scale = 1,
+  facing,
+}: {
+  walking: boolean;
+  scale?: number;
+  facing?: "right" | "left";
+}) {
+  const reduced = useReducedMotion();
+  const [frame, setFrame] = useState(SHEET.frameA);
+
+  const row = walking
+    ? facing === "left"
+      ? SHEET.walkLeftRow
+      : SHEET.walkRightRow
+    : SHEET.idleRow;
+
+  useEffect(() => {
+    if (!walking || reduced) { setFrame(SHEET.frameA); return; }
+    const id = setInterval(
+      () => setFrame(f => (f === SHEET.frameA ? SHEET.frameB : SHEET.frameA)),
+      160,
+    );
+    return () => clearInterval(id);
+  }, [walking, reduced]);
+
+  const fw = SHEET.fw * scale;
+  const fh = SHEET.fh * scale;
+
+  return (
+    <div
+      aria-hidden="true"
+      style={{
+        width: fw,
+        height: fh,
+        backgroundImage: `url('${SHEET.src}')`,
+        backgroundSize: `${SHEET.cols * fw}px ${SHEET.rows * fh}px`,
+        backgroundPosition: `-${frame * fw}px -${row * fh}px`,
+        backgroundRepeat: "no-repeat",
+        imageRendering: "pixelated",
+        flexShrink: 0,
+      }}
+    />
+  );
+}
 
 // Palette shared across all placeholder outfits
 const PALETTE = {
@@ -179,7 +248,28 @@ interface Props {
 
 export function Sprite({ outfit, walking = false, scale = 3, facing = "right" }: Props) {
   const reduced = useReducedMotion();
-  const art = outfits[outfit] ?? outfits.backpack;
+
+  // Level 1 uses the AI-generated idle GIF
+  if (outfit === "backpack") {
+    return (
+      <img
+        src="/sprites/Level1Idle.gif"
+        alt=""
+        aria-hidden="true"
+        style={{
+          width: 200,
+          height: 200,
+          objectFit: "contain",
+          objectPosition: "bottom",
+          imageRendering: "pixelated",
+          flexShrink: 0,
+          transform: facing === "left" ? "scaleX(-1)" : undefined,
+        }}
+      />
+    );
+  }
+
+  const art = outfits[outfit] ?? outfits.hoodie;
   const w = 32 * scale;
   const h = 48 * scale;
 
@@ -197,7 +287,6 @@ export function Sprite({ outfit, walking = false, scale = 3, facing = "right" }:
       }}
     >
       <div style={{ width: w, height: h }}>
-        {/* Scale SVG to pixel-perfect size */}
         <div style={{ width: 32, height: 48, transform: `scale(${scale})`, transformOrigin: "top left" }}>
           {art}
         </div>

@@ -21,6 +21,16 @@ export function Journey({ onComplete }: Props) {
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
   }, []);
 
+  const handleNext = useCallback((id: number) => {
+    const nextLevel = levels.find((l) => l.id === id + 1);
+    if (nextLevel) {
+      jumpToLevel(nextLevel.id);
+    } else {
+      const el = document.getElementById("level-end");
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [jumpToLevel]);
+
   return (
     <div ref={containerRef} className="relative" style={{ height: "100svh", overflow: "hidden" }}>
       <HUD currentLevel={currentLevel} onJump={jumpToLevel} />
@@ -40,6 +50,7 @@ export function Journey({ onComplete }: Props) {
             level={level}
             isActive={level.id === currentLevel}
             onVisible={handleVisible}
+            onNext={() => handleNext(level.id)}
           />
         ))}
 

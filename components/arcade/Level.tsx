@@ -14,9 +14,10 @@ interface Props {
   level: Level;
   isActive: boolean;
   onVisible: (id: number) => void;
+  onNext?: () => void;
 }
 
-export function Level({ level, isActive, onVisible }: Props) {
+export function Level({ level, isActive, onVisible, onNext }: Props) {
   const ref = useRef<HTMLElement>(null);
   const reduced = useReducedMotion();
   const { playTransition } = useSound();
@@ -93,6 +94,7 @@ export function Level({ level, isActive, onVisible }: Props) {
           <DialogueBox
             text={level.script}
             accentColor={level.accentColor}
+            onDone={onNext}
           />
         </motion.div>
       </div>

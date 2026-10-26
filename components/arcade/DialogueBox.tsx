@@ -15,48 +15,83 @@ const TICK_MS = 20;
 export function DialogueBox({ text, accentColor, onDone }: Props) {
   const reduced = useReducedMotion();
   const { playTick, playClick } = useSound();
+
+  // Split script into sentences on \n\n
+  const lines = text.split("\n\n").map(s => s.trim()).filter(Boolean);
+
+  const [lineIndex, setLineIndex] = useState(0);
   const [displayed, setDisplayed] = useState("");
-  const [done, setDone] = useState(false);
+  const [typing, setTyping] = useState(true);
   const indexRef = useRef(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const finish = useCallback(() => {
-    if (timerRef.current) clearInterval(timerRef.current);
-    setDisplayed(text);
-    setDone(true);
-    onDone?.();
-  }, [text, onDone]);
+  const currentLine = lines[lineIndex] ?? "";
+  const isLastLine = lineIndex === lines.length - 1;
 
-  // Reset when text changes (new level)
+  const finishTyping = useCallback(() => {
+    if (timerRef.current) clearInterval(timerRef.current);
+    setDisplayed(currentLine);
+    setTyping(false);
+  }, [currentLine]);
+
+  // Reset typewriter when line changes
   useEffect(() => {
     setDisplayed("");
-    setDone(false);
+    setTyping(true);
     indexRef.current = 0;
 
     if (reduced) {
-      setDisplayed(text);
-      setDone(true);
+      setDisplayed(currentLine);
+      setTyping(false);
       return;
     }
 
     timerRef.current = setInterval(() => {
-      indexRef.current = Math.min(indexRef.current + CHARS_PER_TICK, text.length);
-      setDisplayed(text.slice(0, indexRef.current));
-      // Tick every ~6 chars to avoid audio spam
+      indexRef.current = Math.min(indexRef.current + CHARS_PER_TICK, currentLine.length);
+      setDisplayed(currentLine.slice(0, indexRef.current));
       if (indexRef.current % 6 === 0) playTick();
-      if (indexRef.current >= text.length) {
+      if (indexRef.current >= currentLine.length) {
         clearInterval(timerRef.current!);
-        setDone(true);
-        onDone?.();
+        setTyping(false);
       }
     }, TICK_MS);
 
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
-  }, [text, reduced, onDone]);
+  }, [lineIndex, currentLine, reduced]);
+
+  // Reset to first line when the script changes (new level)
+  useEffect(() => {
+    setLineIndex(0);
+  }, [text]);
+
+  const advance = useCallback(() => {
+    playClick();
+    if (typing) {
+      finishTyping();
+      return;
+    }
+    if (isLastLine) {
+      onDone?.();
+    } else {
+      setLineIndex(i => i + 1);
+    }
+  }, [typing, isLastLine, finishTyping, onDone, playClick]);
+
+  // Keyboard: Enter / Space / ArrowRight advance
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (["Enter", " ", "ArrowRight"].includes(e.key)) {
+        e.preventDefault();
+        advance();
+      }
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [advance]);
 
   return (
     <div
-      className="relative rounded-lg p-4 md:p-5 cursor-pointer"
+      className="relative rounded-lg p-4 md:p-5 cursor-pointer select-none"
       style={{
         background: "rgba(10,10,18,0.92)",
         border: `2px solid ${accentColor}`,
@@ -64,14 +99,14 @@ export function DialogueBox({ text, accentColor, onDone }: Props) {
         maxWidth: "520px",
         width: "100%",
       }}
-      onClick={() => { if (!done) { playClick(); finish(); } }}
-      onKeyDown={(e) => { if ((e.key === "Enter" || e.key === " ") && !done) finish(); }}
+      onClick={advance}
       role="region"
       aria-label="Dialogue"
       aria-live="polite"
       tabIndex={0}
+      onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") advance(); }}
     >
-      {/* Corner triangle — classic JRPG box */}
+      {/* Corner triangle */}
       <span
         aria-hidden="true"
         style={{
@@ -91,7 +126,7 @@ export function DialogueBox({ text, accentColor, onDone }: Props) {
         style={{ fontFamily: "var(--font-body)", color: "var(--fg)", minHeight: "3.6em" }}
       >
         {displayed}
-        {!done && (
+        {typing && (
           <span
             aria-hidden="true"
             style={{
@@ -107,24 +142,34 @@ export function DialogueBox({ text, accentColor, onDone }: Props) {
         )}
       </p>
 
-      {done && (
+      {/* Bottom bar: progress dots + next/done button */}
+      <div className="flex items-center justify-between mt-3">
+        {/* Sentence progress dots */}
+        <div className="flex gap-1" aria-hidden="true">
+          {lines.map((_, i) => (
+            <span
+              key={i}
+              style={{
+                width: 5,
+                height: 5,
+                borderRadius: "50%",
+                background: i === lineIndex ? accentColor : "rgba(255,255,255,0.2)",
+                display: "inline-block",
+                transition: "background 0.2s",
+              }}
+            />
+          ))}
+        </div>
+
+        {/* CTA */}
         <p
-          className="text-[8px] mt-2 text-right"
-          style={{ fontFamily: "var(--font-pixel)", color: accentColor, opacity: 0.7 }}
+          className="text-[8px]"
+          style={{ fontFamily: "var(--font-pixel)", color: accentColor, opacity: typing ? 0.35 : 0.85 }}
           aria-hidden="true"
         >
-          ▼
+          {typing ? "CLICK TO SKIP" : isLastLine ? "▼ CONTINUE" : "▼ NEXT"}
         </p>
-      )}
-
-      {!done && (
-        <p
-          className="text-[8px] mt-2 text-right opacity-40"
-          style={{ fontFamily: "var(--font-pixel)", color: "var(--fg-muted)" }}
-        >
-          CLICK TO SKIP
-        </p>
-      )}
+      </div>
     </div>
   );
 }
