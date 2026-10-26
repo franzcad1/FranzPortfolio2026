@@ -2,7 +2,7 @@
 import { useState, useRef } from "react";
 
 const PHOTOS = [
-  "/about/level1.jfif",
+  "/about/level1.jpg",
   "/about/9916ad89-7580-462c-ae87-a6ab0f902c49.jfif",
   "/about/7bb594e1-c057-4bc5-a431-ea9b7915df66.jfif",
   "/about/level4.jpg",
@@ -94,12 +94,12 @@ export function FastAbout() {
               aria-label="Previous photo"
               className="absolute left-2 top-1/2 -translate-y-1/2 flex items-center justify-center rounded-full transition-opacity hover:opacity-100"
               style={{
-                width: 28, height: 28,
-                background: "rgba(0,0,0,0.5)",
-                border: "1px solid rgba(255,255,255,0.15)",
-                color: "var(--fg)",
-                fontSize: 12,
-                opacity: 0.7,
+                width: 36, height: 36,
+                background: "rgba(0,0,0,0.75)",
+                border: "1px solid rgba(255,255,255,0.4)",
+                color: "#fff",
+                fontSize: 18,
+                opacity: 1,
                 cursor: "pointer",
               }}
             >
@@ -109,14 +109,14 @@ export function FastAbout() {
             <button
               onClick={next}
               aria-label="Next photo"
-              className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center justify-center rounded-full transition-opacity hover:opacity-100"
+              className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center justify-center rounded-full transition-opacity hover:opacity-80"
               style={{
-                width: 28, height: 28,
-                background: "rgba(0,0,0,0.5)",
-                border: "1px solid rgba(255,255,255,0.15)",
-                color: "var(--fg)",
-                fontSize: 12,
-                opacity: 0.7,
+                width: 36, height: 36,
+                background: "rgba(0,0,0,0.75)",
+                border: "1px solid rgba(255,255,255,0.4)",
+                color: "#fff",
+                fontSize: 18,
+                opacity: 1,
                 cursor: "pointer",
               }}
             >
