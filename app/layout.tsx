@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Press_Start_2P } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { ModeProvider } from "@/lib/ModeContext";
 import { ModeToggle } from "@/components/layout/ModeToggle";
 import { meta } from "@/content/content";
@@ -50,6 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <ModeToggle />
           <div id="main-content">{children}</div>
         </ModeProvider>
+        <Analytics />
       </body>
     </html>
   );
