@@ -177,7 +177,7 @@ export const profile = {
       skills: [
         { name: "OpenAI API / LLMs", level: 90 },
         { name: "LangChain", level: 80 },
-        { name: "Groq", level: 78 },
+        { name: "Agent design", level: 82 },
         { name: "Prompt engineering", level: 88 },
         { name: "Workflow automation", level: 85 },
       ],
@@ -188,22 +188,26 @@ export const profile = {
         { name: "React / Next.js", level: 85 },
         { name: "TypeScript", level: 80 },
         { name: "Tailwind CSS", level: 82 },
+        { name: "Redux", level: 78 },
       ],
     },
     {
       label: "Back-End",
       skills: [
-        { name: "Python", level: 82 },
+        { name: "Python", level: 85 },
         { name: "FastAPI", level: 80 },
+        { name: "Node.js", level: 78 },
         { name: "REST APIs", level: 85 },
+        { name: "Docker", level: 75 },
       ],
     },
     {
       label: "Cloud / Infra",
       skills: [
         { name: "Vercel", level: 85 },
-        { name: "Railway", level: 78 },
-        { name: "AWS EC2", level: 75 },
+        { name: "AWS EC2", level: 78 },
+        { name: "PostgreSQL", level: 76 },
+        { name: "GitHub Actions", level: 75 },
       ],
     },
     {
