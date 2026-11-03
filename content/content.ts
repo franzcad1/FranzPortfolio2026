@@ -105,12 +105,12 @@ export const projects = [
     id: "dental-ai",
     title: "DentalAI",
     label: "AI PROJECT",
-    tagline: "Full-stack AI practice management tool built by someone who has actually worked in a dental office.",
+    tagline: "AI scheduling and recall agent built by someone who has actually worked in a dental office, with PHI-redacted logging, CI, and a 34-case eval harness.",
     problem:
       "Dental offices waste hours every week on manual scheduling, recall follow-ups, and patient outreach.",
     built:
       "A full-stack tool with drag-and-drop scheduling, an AI recall queue that drafts personalised patient messages, a searchable patient directory, and a Groq-powered AI agent that can book appointments and answer questions in plain English. Includes a real-time agent log for full observability.",
-    stack: ["Python", "FastAPI", "React", "TypeScript", "Tailwind CSS", "Groq", "LangChain", "Vercel", "Railway"],
+    stack: ["Python", "FastAPI", "React", "Groq", "Alembic", "pytest", "GitHub Actions"],
     result: "Built on the NexHealth API schema, meaning it could connect to a real clinic with minimal changes.",
     preview: "/previews/dental-ai.png",
     links: {
@@ -176,10 +176,12 @@ export const profile = {
       label: "AI / Automation",
       skills: [
         { name: "OpenAI API / LLMs", level: 90 },
-        { name: "LangChain", level: 80 },
+        { name: "Function calling", level: 85 },
         { name: "Agent design", level: 82 },
         { name: "Prompt engineering", level: 88 },
+        { name: "LLM evaluation", level: 78 },
         { name: "Workflow automation", level: 85 },
+        { name: "Claude Code", level: 88 },
       ],
     },
     {
@@ -189,6 +191,8 @@ export const profile = {
         { name: "TypeScript", level: 80 },
         { name: "Tailwind CSS", level: 82 },
         { name: "Redux", level: 78 },
+        { name: "HTML5 / CSS3", level: 88 },
+        { name: "JavaScript", level: 84 },
       ],
     },
     {
@@ -198,6 +202,9 @@ export const profile = {
         { name: "FastAPI", level: 80 },
         { name: "Node.js", level: 78 },
         { name: "REST APIs", level: 85 },
+        { name: "SQLAlchemy / Alembic", level: 75 },
+        { name: "pytest", level: 76 },
+        { name: "Structured logging", level: 75 },
         { name: "Docker", level: 75 },
       ],
     },

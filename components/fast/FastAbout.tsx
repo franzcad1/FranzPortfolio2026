@@ -65,7 +65,7 @@ export function FastAbout() {
           <p>
             That experience led me to build{" "}
             <button onClick={() => highlightProject("dental-ai")} className="underline underline-offset-2 hover:opacity-80 transition-opacity" style={{ color: "var(--cyan)", background: "none", border: "none", cursor: "pointer", padding: 0, font: "inherit" }}>DentalAI</button>
-            , an AI-powered practice management platform, while growing{" "}
+            , an AI scheduling and recall agent, while growing{" "}
             <button onClick={() => highlightProject("cadiente-digital")} className="underline underline-offset-2 hover:opacity-80 transition-opacity" style={{ color: "#ff2d78", background: "none", border: "none", cursor: "pointer", padding: 0, font: "inherit" }}>Cadiente Digital</button>
             , my digital agency helping businesses improve their online presence and operations.
           </p>
