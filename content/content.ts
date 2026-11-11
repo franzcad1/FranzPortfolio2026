@@ -105,12 +105,12 @@ export const projects = [
     id: "dental-ai",
     title: "DentalAI",
     label: "AI PROJECT",
-    tagline: "AI scheduling and recall agent built by someone who has actually worked in a dental office, with PHI-redacted logging, CI, and a 34-case eval harness.",
+    tagline: "AI scheduling and recall agent built by someone who has actually worked in a dental office — RAG-powered, 14 tools, 85-test suite, 40-case eval harness, 43% token reduction.",
     problem:
       "Dental offices waste hours every week on manual scheduling, recall follow-ups, and patient outreach.",
     built:
-      "A full-stack tool with drag-and-drop scheduling, an AI recall queue that drafts personalised patient messages, a searchable patient directory, and a Groq-powered AI agent that can book appointments and answer questions in plain English. Includes a real-time agent log for full observability.",
-    stack: ["Python", "FastAPI", "React", "Groq", "Alembic", "pytest", "GitHub Actions"],
+      "A full-stack tool with drag-and-drop scheduling, an AI recall queue that drafts personalised patient messages, and a Groq-powered agent with 14 tools that can book appointments and answer clinical questions in plain English.\n\nBuilt a RAG layer (Supabase pgvector + Cohere embeddings, 36 chunks across 11 synthetic docs) achieving 100% retrieval accuracy on 6 knowledge-base test cases. Reduced token overhead by 43% using a context-pruning strategy. Backed by an 85-test pytest suite (82 running in CI) and a 40-case eval harness that scores tool choice, argument correctness, and response quality. PHI-redacted structured logging throughout.",
+    stack: ["Python", "FastAPI", "React", "Groq", "Supabase", "Cohere", "Alembic", "pytest", "GitHub Actions", "Docker"],
     result: "Built on the NexHealth API schema, meaning it could connect to a real clinic with minimal changes.",
     preview: "/previews/dental-ai.png",
     links: {
@@ -178,8 +178,11 @@ export const profile = {
         { name: "OpenAI API / LLMs", level: 90 },
         { name: "Function calling", level: 85 },
         { name: "Agent design", level: 82 },
+        { name: "RAG / Vector search", level: 80 },
+        { name: "Embeddings (Cohere)", level: 78 },
         { name: "Prompt engineering", level: 88 },
         { name: "LLM evaluation", level: 78 },
+        { name: "Token budgeting", level: 76 },
         { name: "Workflow automation", level: 85 },
         { name: "Claude Code", level: 88 },
       ],
@@ -213,8 +216,18 @@ export const profile = {
       skills: [
         { name: "Vercel", level: 85 },
         { name: "AWS EC2", level: 78 },
+        { name: "Supabase", level: 78 },
         { name: "PostgreSQL", level: 76 },
         { name: "GitHub Actions", level: 75 },
+      ],
+    },
+    {
+      label: "Observability",
+      skills: [
+        { name: "Azure Application Insights", level: 78 },
+        { name: "OpenTelemetry", level: 75 },
+        { name: "Structured JSON logging", level: 80 },
+        { name: "Request tracing", level: 76 },
       ],
     },
     {
